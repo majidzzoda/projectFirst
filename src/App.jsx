@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './layout/layout'
 import Home from './pages/home'
@@ -18,6 +18,7 @@ const App = () => {
         {
           path: "Users",
           element: <Users />
+
         },
         {
           path: "UserById/:id",

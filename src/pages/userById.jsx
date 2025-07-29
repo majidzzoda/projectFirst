@@ -95,7 +95,7 @@ const UserById = () => {
             )}
             {data && (
                 <article key={data.id} className='flex shadow-2xl flex-col gap-[5px] p-[10px] lg:mt-[0px] mt-[-40px] lg:gap-[10px] transition-all duration-500 items-center bg-gray-300 dark:bg-gray-900 lg:w-[55%] rounded-[12px] justify-center'>
-                    <h1 className='font-bold text-blue-600 transition-all duration-500 dark:text-gray-500'>{data.name}</h1>
+                    <h1 className='font-bold text-blue-600 transition-all duration-500'>{data.name}</h1>
                     <Carousel Carousel autoplay dots className='w-[250px] rounded-[8px] lg:w-[500px]' >
                         {
                             data.images.map((image) => {
@@ -112,8 +112,8 @@ const UserById = () => {
                         }
                     </Carousel >
                     <div className='flex items-center lg:flex-row flex-col gap-[5px] font-[500] text-[16px]'>
-                        <h1 className='text-gray-500 dark:text-gray-500'>{data.id}</h1>
-                        <h1 className='text-blue-500 lg:border-x-[2px] border-blue-500 px-[5px] dark:text-gray-500'>{data.description}</h1>
+                        <h1 className='text-gray-500'>{data.id}</h1>
+                        <h1 className='text-blue-500 lg:border-x-[2px] border-blue-500 px-[5px]'>{data.description}</h1>
                         <h1 className={`${data.isCompleted ? 'text-green-500 transition-all duration-500' : 'text-red-500 transition-all duration-500'}`}>{data.isCompleted ? t("active") : t("inactive")}</h1>
                     </div>
                 </article>

@@ -9,6 +9,7 @@
     "addImage": "Upload",
     "addUser": "Add",
     "namePlcHld": "Name",
-    "descPlcHld": "Description",
-    "imgInp": "Upload file"
+    "descPlcHld": "Last Name",
+    "imgInp": "Upload file",
+    "search": "Search"
 }

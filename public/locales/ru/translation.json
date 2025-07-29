@@ -9,6 +9,7 @@
     "addImage": "Загрузить",
     "addUser": "Добавить",
     "namePlcHld": "Имя",
-    "descPlcHld": "Описание",
-    "imgInp": "Загрузить файл"
+    "descPlcHld": "Фамилия",
+    "imgInp": "Загрузить файл",
+    "search": "Поиск"
 }

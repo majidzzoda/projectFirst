@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import axios from 'axios'
 import { Api } from '../config/api';
-import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import LazyLoader from '../components/lazycomp'; // тот, что мы делали
+const UserList = React.lazy(() => import('../components/UserList'));
 
 const Users = () => {
+    let searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5 text-gray-400">
+        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+    const [search, setSearch] = useState("");
     const { t, i18n } = useTranslation();
     const [data, setData] = useState([]);
     const [addModal, setAddModal] = useState(false);
+    const filteredData = data.filter((e) =>
+        e.name.toLowerCase().trim().includes(search.toLowerCase().trim())
+    );
     const formik = useFormik({
         initialValues: {
             Images: "",
@@ -50,9 +58,6 @@ const Users = () => {
     }, [])
     return (
         <div className='dark:bg-gray-950 min-h-[90vh] p-[25px] bg-gray-200 transition-all duration-500'>
-            <svg onClick={() => setAddModal(true)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 cursor-pointer text-blue-500">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-            </svg>
             {addModal && (
                 <div
                     className='fixed inset-0 bg-black/30 flex items-center justify-center backdrop-blur-[5px]'>
@@ -64,7 +69,7 @@ const Users = () => {
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             placeholder={t("namePlcHld")}
-                            className='bg-white dark:bg-gray-950 placeholder:text-gray-400 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px]'
+                            className='py-[5px] px-[10px] outline-none dark:text-white dark:border-gray-900 focus:border-blue-500 transition-all duration-500 rounded-[8px] w-full placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border border-gray-300'
                         />
                         <input
                             type="text"
@@ -72,10 +77,12 @@ const Users = () => {
                             name='Description'
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
-                            className='bg-white dark:bg-gray-950 placeholder:text-gray-400 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px]'
+                            className='py-[5px] px-[10px] outline-none dark:text-white dark:border-gray-900 focus:border-blue-500 transition-all duration-500 rounded-[8px] w-full placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border border-gray-300'
                             placeholder={t("descPlcHld")}
                         />
-                        <label className="bg-white dark:bg-gray-950 text-gray-400 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px] cursor-pointer inline-block">
+                        <label
+                            className='py-[5px] px-[10px] outline-none dark:text-gray-400 dark:border-gray-900 focus:border-blue-500 transition-all duration-500 rounded-[8px] w-full placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border border-gray-300'
+                        >
                             {t("imgInp")}
                             <input
                                 type="file"
@@ -84,24 +91,32 @@ const Users = () => {
                                 className="hidden"
                             />
                         </label>
-                        <button className='bg-blue-500 border text-white dark:border-gray-900 transition-all duration-500 border-gray-200 p-[5px] rounded-[5px]'
+                        <button className='bg-blue-500 border text-white dark:border-gray-900 transition-all duration-500 border-gray-200 py-[5px] px-[10px] rounded-[10px]'
                             type="submit">{t("addUser")}</button>
                     </form>
                 </div>
             )}
-            <h1 className='text-center font-bold transition-all dark:text-blue-500 duration-500 text-blue-500 pt-[10px]'>{t("users")}: {data.length}</h1>
-            <div className='dark:bg-gray-900 transition-all duration-500 bg-gray-300 p-[25px] mt-[50px] rounded-[12px]'>
-                <div className='flex flex-col h-[350px] lg:h-[500px] transition-all duration-500 overflow-scroll rounded-[8px] bg-gray-300 dark:bg-gray-900 gap-[5px]'>
-                    {data.map((e) => {
-                        return (
-                            <div className='p-[10px] dark:border-none transition-all duration-500 rounded-[8px] bg-gray-200 dark:bg-gray-950'>
-                                <Link to={`/UserById/${e.id}`}>
-                                    <h1 className='transition-all duration-500 text-blue-400'>{e.name}</h1>
-                                </Link>
-                            </div>
-                        )
-                    })}
+            <div className='flex items-center justify-between px-[30px]'>
+                <h1 className='text-center font-bold transition-all dark:text-blue-500 duration-500 text-blue-500'>{t("users")}: {filteredData.length}</h1>
+                <svg onClick={() => setAddModal(true)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7 cursor-pointer text-blue-500">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                </svg>
+            </div>
+            <div className='dark:bg-gray-900 transition-all duration-500 bg-gray-300 p-[25px] mt-[15px] rounded-[12px]'>
+                <div className='flex items-center'>
+                    <input
+                        type="search"
+                        placeholder={t("search")}
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className='p-[10px] pl-[35px] outline-none dark:text-white dark:border-gray-900 focus:border-blue-500 transition-all duration-500 rounded-[8px] w-full placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border border-gray-300'
+                    />
+                    <button className='absolute pl-[10px]'>{searchIcon}</button>
                 </div>
+                <Suspense fallback={<LazyLoader />}>
+                    <UserList data={data} search={search} />
+                </Suspense>
+
             </div>
         </div>
     )
