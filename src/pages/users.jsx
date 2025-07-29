@@ -57,7 +57,7 @@ const Users = () => {
         get()
     }, [])
     return (
-        <div className='dark:bg-gray-950 min-h-[90vh] p-[25px] bg-gray-200 transition-all duration-500'>
+        <div className='dark:bg-gray-950 min-h-[80vh] pt-[25px] px-[25px] bg-gray-200 transition-all duration-500'>
             {addModal && (
                 <div
                     className='fixed inset-0 bg-black/30 flex items-center justify-center backdrop-blur-[5px]'>

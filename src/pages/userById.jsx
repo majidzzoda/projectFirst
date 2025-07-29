@@ -79,7 +79,7 @@ const UserById = () => {
         get()
     }, [])
     return (
-        <div className='min-h-[90vh] flex flex-col gap-[10px] items-center justify-center transition-all duration-500 dark:bg-gray-950'>
+        <div className='min-h-[80vh] flex flex-col gap-[10px] items-center justify-center transition-all duration-500 dark:bg-gray-950'>
             {successDeleted && (
                 <div className='flex flex-col dark:bg-gray-900 bg-gray-200 duration-500 transition-all shadow-2xl p-[12px] rounded-[12px] text-center gap-[10px]'>
                     <div className='flex items-center gap-[5px] justify-center'>

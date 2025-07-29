@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const Home = () => {
     const { t } = useTranslation();
     return (
-        <div className='dark:bg-gray-950 flex items-center flex-col gap-[15px] justify-center min-h-[90vh] bg-gray-200 text-gray-950 transition-all duration-500 dark:text-gray-200'>
+        <div className='dark:bg-gray-950 flex items-center flex-col gap-[15px] justify-center min-h-[80vh] bg-gray-200 text-gray-950 transition-all duration-500 dark:text-gray-200'>
             <motion.h1 initial={{ scale: .9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: .3 }} className='text-2xl text-center font-bold'>{t("welcome")}</motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .5 }} className='text-lg text-center'>{t("perekhod")}</motion.p>
             <Link to="users">

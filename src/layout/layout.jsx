@@ -7,7 +7,7 @@ const Layout = () => {
     const [theme, toggleTheme] = useDarkSide();
     const { t, i18n } = useTranslation()
     return (
-        <div>
+        <div className="flex flex-col min-h-[80vh]" >
             <div className='flex items-center gap-[5px] pt-[20px] px-[30px] justify-between lg:gap-[20px] transition-all duration-500'>
                 <div onClick={toggleTheme}>
                     <ThemeToggle />
@@ -34,7 +34,9 @@ const Layout = () => {
                     </svg>
                 </NavLink>
             </div>
-            <Outlet />
+            <main className='flex-grow'>
+                <Outlet />
+            </main>
         </div>
     )
 }
