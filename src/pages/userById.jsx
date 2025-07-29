@@ -4,7 +4,9 @@ import { Link, useParams } from 'react-router-dom';
 import { Api, ApiAddImg, ApiComplete, ApiImageDelete, ApiImages } from '../config/api';
 import { Carousel } from 'antd';
 import { Formik, useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 const UserById = () => {
+    const { t, i18n } = useTranslation()
     const [data, setData] = useState(null);
     const [successDeleted, setSuccessDeleted] = useState(false);
     const { id } = useParams();
@@ -77,17 +79,17 @@ const UserById = () => {
         get()
     }, [])
     return (
-        <div className='min-h-screen flex flex-col gap-[10px] items-center justify-center transition-all duration-500 dark:bg-gray-950'>
+        <div className='min-h-[90vh] flex flex-col gap-[10px] items-center justify-center transition-all duration-500 dark:bg-gray-950'>
             {successDeleted && (
                 <div className='flex flex-col dark:bg-gray-900 bg-gray-200 duration-500 transition-all shadow-2xl p-[12px] rounded-[12px] text-center gap-[10px]'>
                     <div className='flex items-center gap-[5px] justify-center'>
-                        <h1 className='text-[20px] text-green-500'>Успешно удалено</h1>
+                        <h1 className='text-[20px] text-green-500'>{t("successDelete")}</h1>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8 text-green-500">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                         </svg>
                     </div>
                     <Link to={'/users'}>
-                        <button className='bg-gray-300 transition-all duration-500 text-gray-950 dark:text-gray-200 cursor-pointer dark:bg-gray-950 py-[5px] px-[10px] rounded-[5px]'>Перейти к пользователям</button>
+                        <button className='bg-gray-300 transition-all duration-500 text-gray-950 dark:text-gray-200 cursor-pointer dark:bg-gray-950 py-[5px] px-[10px] rounded-[5px]'>{t("buttonPerekhod")}</button>
                     </Link>
                 </div>
             )}
@@ -112,7 +114,7 @@ const UserById = () => {
                     <div className='flex items-center lg:flex-row flex-col gap-[5px] font-[500] text-[16px]'>
                         <h1 className='text-gray-500 dark:text-gray-500'>{data.id}</h1>
                         <h1 className='text-blue-500 lg:border-x-[2px] border-blue-500 px-[5px] dark:text-gray-500'>{data.description}</h1>
-                        <h1 className={`${data.isCompleted ? 'text-green-500 transition-all duration-500' : 'text-red-500 transition-all duration-500'}`}>{data.isCompleted ? "Активен" : "Неактивен"}</h1>
+                        <h1 className={`${data.isCompleted ? 'text-green-500 transition-all duration-500' : 'text-red-500 transition-all duration-500'}`}>{data.isCompleted ? t("active") : t("inactive")}</h1>
                     </div>
                 </article>
             )}
@@ -132,7 +134,7 @@ const UserById = () => {
                             </svg>
                         </label>
                         {formik.values.Images && (
-                            <button type="submit" className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">Загрузить</button>
+                            <button type="submit" className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">{t("addImage")}</button>
                         )}
                     </form>
                 </div>

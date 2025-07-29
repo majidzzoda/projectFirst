@@ -3,8 +3,10 @@ import axios from 'axios'
 import { Api } from '../config/api';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 const Users = () => {
+    const { t, i18n } = useTranslation();
     const [data, setData] = useState([]);
     const [addModal, setAddModal] = useState(false);
     const formik = useFormik({
@@ -47,7 +49,7 @@ const Users = () => {
         get()
     }, [])
     return (
-        <div className='dark:bg-gray-950 min-h-screen p-[25px] bg-gray-200 transition-all duration-500'>
+        <div className='dark:bg-gray-950 min-h-[90vh] p-[25px] bg-gray-200 transition-all duration-500'>
             <svg onClick={() => setAddModal(true)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 cursor-pointer text-blue-500">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
             </svg>
@@ -61,9 +63,8 @@ const Users = () => {
                             name='Name'
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
-                            placeholder="Name"
-                            className='bg-white dark:bg-gray-950 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px]'
-
+                            placeholder={t("namePlcHld")}
+                            className='bg-white dark:bg-gray-950 placeholder:text-gray-400 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px]'
                         />
                         <input
                             type="text"
@@ -71,19 +72,24 @@ const Users = () => {
                             name='Description'
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
-                            className='bg-white dark:bg-gray-950 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px]'
-                            placeholder="Description"
-
+                            className='bg-white dark:bg-gray-950 placeholder:text-gray-400 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px]'
+                            placeholder={t("descPlcHld")}
                         />
-                        <input type="file" name='Images'
-                            className='bg-white dark:bg-gray-950 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px]'
-                            onChange={handleChangeFile} />
+                        <label className="bg-white dark:bg-gray-950 text-gray-400 transition-all duration-500 dark:border-gray-900 border border-gray-200 p-[5px] rounded-[5px] cursor-pointer inline-block">
+                            {t("imgInp")}
+                            <input
+                                type="file"
+                                name="Images"
+                                onChange={handleChangeFile}
+                                className="hidden"
+                            />
+                        </label>
                         <button className='bg-blue-500 border text-white dark:border-gray-900 transition-all duration-500 border-gray-200 p-[5px] rounded-[5px]'
-                            type="submit">Add</button>
+                            type="submit">{t("addUser")}</button>
                     </form>
                 </div>
             )}
-            <h1 className='text-center font-bold transition-all dark:text-blue-500 duration-500 text-blue-500 pt-[10px]'>Пользователи: {data.length}</h1>
+            <h1 className='text-center font-bold transition-all dark:text-blue-500 duration-500 text-blue-500 pt-[10px]'>{t("users")}: {data.length}</h1>
             <div className='dark:bg-gray-900 transition-all duration-500 bg-gray-300 p-[25px] mt-[50px] rounded-[12px]'>
                 <div className='flex flex-col h-[350px] lg:h-[500px] transition-all duration-500 overflow-scroll rounded-[8px] bg-gray-300 dark:bg-gray-900 gap-[5px]'>
                     {data.map((e) => {

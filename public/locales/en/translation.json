@@ -1,0 +1,14 @@
+{
+    "welcome": "Welcome!",
+    "perekhod": "Click the button below to see the list of users.",
+    "buttonPerekhod": "Go to users",
+    "users": "Users",
+    "active": "Active",
+    "inactive": "Inactive",
+    "successDelete": "Successfully deleted",
+    "addImage": "Upload",
+    "addUser": "Add",
+    "namePlcHld": "Name",
+    "descPlcHld": "Description",
+    "imgInp": "Upload file"
+}
