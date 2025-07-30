@@ -1,0 +1,16 @@
+{
+    "welcome": "Bienvenue !",
+    "perekhod": "Cliquez sur le bouton ci-dessous pour voir la liste des utilisateurs.",
+    "buttonPerekhod": "Aller aux utilisateurs",
+    "users": "Utilisateurs",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "successDelete": "Supprimé avec succès",
+    "addImage": "Télécharger",
+    "addUser": "Ajouter",
+    "namePlcHld": "Prénom",
+    "descPlcHld": "Nom de famille",
+    "imgInp": "Téléverser un fichier",
+    "search": "Rechercher"
+  }
+  

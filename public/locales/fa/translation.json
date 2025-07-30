@@ -1,0 +1,15 @@
+{
+    "welcome": "خوش آمدید!",
+    "perekhod": "برای مشاهده لیست کاربران روی دکمه زیر کلیک کنید.",
+    "buttonPerekhod": "رفتن به کاربران",
+    "users": "کاربران",
+    "active": "فعال",
+    "inactive": "غیرفعال",
+    "successDelete": "با موفقیت حذف شد",
+    "addImage": "آپلود",
+    "addUser": "افزودن",
+    "namePlcHld": "نام",
+    "descPlcHld": "نام خانوادگی",
+    "imgInp": "آپلود فایل",
+    "search": "جستجو"
+}

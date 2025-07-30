@@ -1,0 +1,15 @@
+{
+    "welcome": "Witamy!",
+    "perekhod": "Kliknij poniższy przycisk, aby zobaczyć listę użytkowników.",
+    "buttonPerekhod": "Przejdź do użytkowników",
+    "users": "Użytkownicy",
+    "active": "Aktywny",
+    "inactive": "Nieaktywny",
+    "successDelete": "Pomyślnie usunięto",
+    "addImage": "Prześlij",
+    "addUser": "Dodaj",
+    "namePlcHld": "Imię",
+    "descPlcHld": "Nazwisko",
+    "imgInp": "Prześlij plik",
+    "search": "Szukaj"
+  }

@@ -1,0 +1,16 @@
+{
+    "welcome": "Xoş gəlmisiniz!",
+    "perekhod": "İstifadəçilər siyahısını görmək üçün aşağıdakı düyməni klikləyin.",
+    "buttonPerekhod": "İstifadəçilərə keçid",
+    "users": "İstifadəçilər",
+    "active": "Aktiv",
+    "inactive": "Passiv",
+    "successDelete": "Uğurla silindi",
+    "addImage": "Yüklə",
+    "addUser": "Əlavə et",
+    "namePlcHld": "Ad",
+    "descPlcHld": "Soyad",
+    "imgInp": "Fayl yüklə",
+    "search": "Axtar"
+  }
+  

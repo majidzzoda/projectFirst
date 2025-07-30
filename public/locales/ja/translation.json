@@ -1,0 +1,16 @@
+{
+    "welcome": "ようこそ！",
+    "perekhod": "下のボタンをクリックしてユーザー一覧を表示します。",
+    "buttonPerekhod": "ユーザーへ移動",
+    "users": "ユーザー",
+    "active": "アクティブ",
+    "inactive": "非アクティブ",
+    "successDelete": "正常に削除されました",
+    "addImage": "アップロード",
+    "addUser": "追加",
+    "namePlcHld": "名前",
+    "descPlcHld": "姓",
+    "imgInp": "ファイルをアップロード",
+    "search": "検索"
+  }
+  

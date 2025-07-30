@@ -16,6 +16,25 @@ const Layout = () => {
                     <option value="en">English 🇬🇧</option>
                     <option value="ru">Русский 🇷🇺</option>
                     <option value="tj">Тоҷикӣ 🇹🇯</option>
+                    <option value="uz">Oʻzbekcha 🇺🇿</option>
+                    <option value="es">Español 🇪🇸</option>
+                    <option value="ar">العربية 🇸🇦</option>
+                    <option value="uk">Українська 🇺🇦</option>
+                    <option value="zh">中文 🇨🇳</option>
+                    <option value="fr">Français 🇫🇷</option>
+                    <option value="hi">हिन्दी 🇮🇳</option>
+                    <option value="tr">Türkçe 🇹🇷</option>
+                    <option value="kk">Қазақша 🇰🇿</option>
+                    <option value="ky">Кыргызча 🇰🇬</option>
+                    <option value="ce">Нохчийн мотт 🇷🇺</option>
+                    <option value="az">Azərbaycan dili 🇦🇿</option>
+                    <option value="hy">Հայերեն 🇦🇲</option>
+                    <option value="ka">ქართული 🇬🇪</option>
+                    <option value="ja">日本語 🇯🇵</option>
+                    <option value="ko">한국어 🇰🇷</option>
+                    <option value="fa">فارسی 🇮🇷</option>
+                    <option value="ps">دری / پشتو 🇦🇫</option>
+                    <option value="pl">Polski 🇵🇱</option>
                 </select>
             </div>
             <div className='fixed bottom-0 w-full border-t border-blue-500 dark:border-blue-800 font-bold text-[18px] py-[12px] lg:py-[25px] 

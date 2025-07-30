@@ -1,0 +1,15 @@
+{
+    "welcome": "Xush kelibsiz!",
+    "perekhod": "Foydalanuvchilar roʻyxatini koʻrish uchun pastdagi tugmani bosing.",
+    "buttonPerekhod": "Foydalanuvchilarga oʻtish",
+    "users": "Foydalanuvchilar",
+    "active": "Faol",
+    "inactive": "Nofaol",
+    "successDelete": "Muvaffaqiyatli o‘chirildi",
+    "addImage": "Yuklash",
+    "addUser": "Qo‘shish",
+    "namePlcHld": "Ism",
+    "descPlcHld": "Familiya",
+    "imgInp": "Fayl yuklang",
+    "search": "Qidirish"
+}

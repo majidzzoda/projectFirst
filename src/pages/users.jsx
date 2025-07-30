@@ -2,6 +2,8 @@ import React, { useEffect, useState, Suspense } from 'react'
 import axios from 'axios'
 import { Api } from '../config/api';
 import { useFormik } from 'formik';
+import { useForm } from "react-hook-form";
+
 import { useTranslation } from 'react-i18next';
 import LazyLoader from '../components/lazycomp'; // тот, что мы делали
 const UserList = React.lazy(() => import('../components/UserList'));
@@ -15,40 +17,33 @@ const Users = () => {
     const [data, setData] = useState([]);
     const [addModal, setAddModal] = useState(false);
     const filteredData = data.filter((e) =>
-        e.name.toLowerCase().trim().includes(search.toLowerCase().trim())
+        e.Name.toLowerCase().trim().includes(search.toLowerCase().trim())
     );
-    const formik = useFormik({
-        initialValues: {
-            Images: "",
-            Name: "",
-            Description: ""
-        },
-        onSubmit: async (values, { resetForm }) => {
-            const formData = new FormData();
-            formData.append("name", values.Name);
-            formData.append("description", values.Description);
-            formData.append("images", values.Images);
-            try {
-                await axios.post(Api, formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data"
-                    }
-                })
-                get();
-                resetForm();
-                setAddModal(false);
-            } catch (error) {
-                console.error(error);
-            }
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset
+    } = useForm();
+
+    const onSubmit = async (data) => {
+        try {
+            await axios.post(Api, {
+                Name: data.Name,
+                Description: data.Description
+            });
+            setAddModal(false);
+            get();
+            reset(); // очищаем поля
+        } catch (err) {
+            console.error(err);
         }
-    })
-    const handleChangeFile = (event) => {
-        formik.setFieldValue("Images", event.target.files[0])
-    }
+    };
+
     async function get() {
         try {
             const { data } = await axios.get(Api);
-            setData(data.data);
+            setData(data);
         } catch (error) {
             console.error(error);
         }
@@ -61,41 +56,48 @@ const Users = () => {
             {addModal && (
                 <div
                     className='fixed inset-0 bg-black/30 flex items-center justify-center backdrop-blur-[5px]'>
-                    <form className='flex flex-col gap-[5px] w-[85%] transition-all duration-500 dark:bg-gray-900 bg-gray-200 p-[20px] rounded-[12px]' onSubmit={formik.handleSubmit} action="">
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className='flex flex-col gap-[10px] w-[85%] dark:bg-gray-900 bg-gray-200 p-[20px] rounded-[12px]'
+                    >
+                        {/* Name Field */}
                         <input
                             type="text"
-                            value={formik.values.Name}
-                            name='Name'
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
                             placeholder={t("namePlcHld")}
-                            className='py-[5px] px-[10px] outline-none dark:text-white dark:border-gray-900 focus:border-blue-500 transition-all duration-500 rounded-[8px] w-full placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border border-gray-300'
+                            {...register("Name", {
+                                required: t("nameRequired"),
+                                minLength: { value: 2, message: t("nameMin") },
+                                maxLength: { value: 30, message: t("nameMax") }
+                            })}
+                            className='py-[5px] px-[10px] outline-none dark:text-white border transition-all duration-300 rounded-[8px] placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border-gray-300 dark:border-gray-800'
                         />
+                        {errors.Name && <p className="text-red-500 text-sm">{errors.Name.message}</p>}
+
+                        {/* Description Field */}
                         <input
                             type="text"
-                            value={formik.values.Description}
-                            name='Description'
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            className='py-[5px] px-[10px] outline-none dark:text-white dark:border-gray-900 focus:border-blue-500 transition-all duration-500 rounded-[8px] w-full placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border border-gray-300'
                             placeholder={t("descPlcHld")}
+                            {...register("Description", {
+                                required: t("descRequired"),
+                                minLength: { value: 5, message: t("descMin") },
+                                maxLength: { value: 100, message: t("descMax") }
+                            })}
+                            className='py-[5px] px-[10px] outline-none dark:text-white border transition-all duration-300 rounded-[8px] placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border-gray-300 dark:border-gray-800'
                         />
-                        <label
-                            className='py-[5px] px-[10px] outline-none dark:text-gray-400 dark:border-gray-900 focus:border-blue-500 transition-all duration-500 rounded-[8px] w-full placeholder:text-gray-400 bg-gray-200 dark:bg-gray-950 border border-gray-300'
+                        {errors.Description && <p className="text-red-500 text-sm">{errors.Description.message}</p>}
+
+                        {/* Submit Button */}
+                        <button
+                            type="submit"
+                            className='bg-blue-500 text-white py-[8px] px-[10px] rounded-[8px] hover:bg-blue-600 transition-all duration-300'
                         >
-                            {t("imgInp")}
-                            <input
-                                type="file"
-                                name="Images"
-                                onChange={handleChangeFile}
-                                className="hidden"
-                            />
-                        </label>
-                        <button className='bg-blue-500 border text-white dark:border-gray-900 transition-all duration-500 border-gray-200 py-[5px] px-[10px] rounded-[10px]'
-                            type="submit">{t("addUser")}</button>
+                            {t("addUser")}
+                        </button>
                     </form>
+
                 </div>
-            )}
+            )
+            }
             <div className='flex items-center justify-between px-[30px]'>
                 <h1 className='text-center font-bold transition-all dark:text-blue-500 duration-500 text-blue-500'>{t("users")}: {filteredData.length}</h1>
                 <svg onClick={() => setAddModal(true)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7 cursor-pointer text-blue-500">
@@ -118,7 +120,7 @@ const Users = () => {
                 </Suspense>
 
             </div>
-        </div>
+        </div >
     )
 }
 

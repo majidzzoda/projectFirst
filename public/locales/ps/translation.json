@@ -1,0 +1,15 @@
+{
+    "welcome": "ښه راغلاست!",
+    "perekhod": "د کاروونکو لیست لیدو لپاره لاندې تڼۍ کلیک کړئ.",
+    "buttonPerekhod": "کاروونکو ته لاړ شئ",
+    "users": "کاروونکي",
+    "active": "فعال",
+    "inactive": "غیرفعال",
+    "successDelete": "په بریالیتوب سره ړنګ شو",
+    "addImage": "پورته کول",
+    "addUser": "زیاتول",
+    "namePlcHld": "نوم",
+    "descPlcHld": "تخلص",
+    "imgInp": "دوتنه پورته کړئ",
+    "search": "لټون"
+  }

@@ -1,0 +1,16 @@
+{
+    "welcome": "مرحبًا!",
+    "perekhod": "انقر على الزر أدناه لعرض قائمة المستخدمين.",
+    "buttonPerekhod": "اذهب إلى المستخدمين",
+    "users": "المستخدمون",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "successDelete": "تم الحذف بنجاح",
+    "addImage": "تحميل",
+    "addUser": "إضافة",
+    "namePlcHld": "الاسم",
+    "descPlcHld": "اللقب",
+    "imgInp": "تحميل ملف",
+    "search": "بحث"
+  }
+  

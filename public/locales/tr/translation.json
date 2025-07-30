@@ -1,0 +1,16 @@
+{
+    "welcome": "Hoş geldiniz!",
+    "perekhod": "Kullanıcı listesini görmek için aşağıdaki butona tıklayın.",
+    "buttonPerekhod": "Kullanıcılara git",
+    "users": "Kullanıcılar",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "successDelete": "Başarıyla silindi",
+    "addImage": "Yükle",
+    "addUser": "Ekle",
+    "namePlcHld": "Ad",
+    "descPlcHld": "Soyad",
+    "imgInp": "Dosya yükle",
+    "search": "Ara"
+  }
+  

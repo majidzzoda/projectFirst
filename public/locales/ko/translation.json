@@ -1,0 +1,16 @@
+{
+    "welcome": "환영합니다!",
+    "perekhod": "아래 버튼을 클릭하여 사용자 목록을 확인하세요.",
+    "buttonPerekhod": "사용자 목록으로 이동",
+    "users": "사용자",
+    "active": "활성",
+    "inactive": "비활성",
+    "successDelete": "성공적으로 삭제됨",
+    "addImage": "업로드",
+    "addUser": "추가",
+    "namePlcHld": "이름",
+    "descPlcHld": "성",
+    "imgInp": "파일 업로드",
+    "search": "검색"
+  }
+  

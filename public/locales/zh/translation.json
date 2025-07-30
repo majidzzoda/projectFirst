@@ -1,0 +1,16 @@
+{
+    "welcome": "欢迎！",
+    "perekhod": "点击下方按钮查看用户列表。",
+    "buttonPerekhod": "前往用户",
+    "users": "用户",
+    "active": "活跃",
+    "inactive": "不活跃",
+    "successDelete": "删除成功",
+    "addImage": "上传",
+    "addUser": "添加",
+    "namePlcHld": "名字",
+    "descPlcHld": "姓氏",
+    "imgInp": "上传文件",
+    "search": "搜索"
+  }
+  
